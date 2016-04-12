@@ -595,9 +595,12 @@ int adventurerEffect(struct gameState *state, int handPos) {
   	} 
     drawCard(currentPlayer, state);
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-    if (cardDrawn == copper || 
+    /*if (cardDrawn == copper || 
         cardDrawn == silver || 
-        cardDrawn == gold)
+        cardDrawn == gold)*/
+    if (cardDrawn == copper && //Forced Bug
+        cardDrawn == silver && //
+        cardDrawn == gold)     //
       drawntreasure++;
     else { 
       temphand[z]=cardDrawn;
@@ -616,7 +619,8 @@ int councilRoomEffect(struct gameState *state, int handPos) {
   int i;
   int currentPlayer = whoseTurn(state);
   //+4 Cards
-  for (i = 0; i < 4; i++) { 
+  /*for (i = 0; i < 4; i++) { */
+  for (i = 0; i <= 4; i++) {         //Forced Bug
     drawCard(currentPlayer, state);
   } 
 			
