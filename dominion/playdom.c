@@ -10,6 +10,10 @@ int main (int argc, char** argv) {
   int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, 
 	       sea_hag, tribute, smithy};
 
+  if (argc < 2){
+    printf("ERROR: Missing parameter\n");
+    return 1;
+  }
   printf ("Starting game.\n");
   
   initializeGame(2, k, atoi(argv[1]), p);
