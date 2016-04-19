@@ -2,7 +2,7 @@ Assignment 1
 refactor.txt
 Kai Ovesen
 
-For this assignment I decided to refactor the following cards: adventurer, council room, feast, mine, and remodel. When refactoring the cards, I conducted # steps to ensure that no bugs were introduced during the process.
+For this assignment I decided to refactor the following cards: adventurer, council room, feast, mine, and remodel. When refactoring each card, I conducted 5 steps to ensure that no bugs were introduced during the process.
 1) Copy all content of switch statement that relates to the card in question and paste it in it's own function named <NAME_OF_CARD>Effect(). Leave the switch statement uncommented.
 2) Complile the code as is. This should cause a complier error and reveal which variables from cardEffect() are needed in this new function. If a variable was passed into the cardEffect() function, add them as parameters in this new function. If a variable was declared in cardEffect(), declare it in the new function.
 3) Once the variables have been added, compile the code to ensure that the refactoring errors were resolved.
