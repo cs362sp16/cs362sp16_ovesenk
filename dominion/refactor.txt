@@ -1,0 +1,19 @@
+Assignment 1
+refactor.txt
+Kai Ovesen
+
+For this assignment I decided to refactor the following cards: adventurer, council room, feast, mine, and remodel. When refactoring the cards, I conducted # steps to ensure that no bugs were introduced during the process.
+1) Copy all content of switch statement that relates to the card in question and paste it in it's own function named <NAME_OF_CARD>Effect(). Leave the switch statement uncommented.
+2) Complile the code as is. This should cause a complier error and reveal which variables from cardEffect() are needed in this new function. If a variable was passed into the cardEffect() function, add them as parameters in this new function. If a variable was declared in cardEffect(), declare it in the new function.
+3) Once the variables have been added, compile the code to ensure that the refactoring errors were resolved.
+4) Call the new function in the appropriate switch statement and comment out the rest of the original code that was refactored. Return the value that the new funciton returns. Recomplie and ensure that functionality was not lost.
+5) If any variables declared in card effect are now unused, delete them.
+
+After all of the refactoring, I was left with 5 new functions. Their declarations are as follows:
+int adventurerEffect(struct gameState *state, int handPos) 
+int councilRoomEffect(struct gameState *state, int handPos)
+int feastEffect(int choice1, struct gameState *state, int handPos)
+int mineEffect(int choice1, int choice2, struct gameState *state, int handPos)
+int remodelEffect(int choice1, int choice2, struct gameState *state, int handPos)
+
+Once the 5 cards were refactored, I introduced bugs in adventurerEffect (lines601-603) and councilRoomEffect (line 623).
