@@ -5,8 +5,9 @@ Failed test 1: numHandCards(p) == numHandCardsBefore + 4 - 1
 Description: The council room card functionality does not properly update the number of cards in the hand of the current player. During this test, the expected number of cards in the hand of the current player is 8 cards (starting with 5, draw 4, discard 1) however the actual number of cards is 3. The location where this bug occurs is dominion.c, lines 624-626. The bug most likely exists in the drawCard() function.
 NOTE: This was a forced bug was introduced in assignment one during refactoring.
 
-Failed test 1: numHandCards(p) == 5 + 1
+Failed test 2: numHandCards(p) == 5 + 1
 Decription: The council room card functionality does not properly update the number of cards in the hand of the other players. During this test, the expected number of cards in the hands of the other players is 6 however the actual number of cards is 5. The location where this bug occurs is dominion.c, lines 632-636. The bug most likely exists in the drawCard() function.
+
 
 cardtest2: steward
 Failed test 1: p->coins == coinsBefore + 2

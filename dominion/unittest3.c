@@ -44,8 +44,8 @@ int main(int arc, char *argv[]) {
   assertTrue(p2->supplyCount[gold] == 30, "p2->supplyCount[gold] == 30");
   assertTrue(p2->embargoTokens[0] == 0, "p2->embargoTokens[0] == 0)");
 
-  assertTrue(p2->deckCount[0] == 5, "p2->deckCount[0] == 5");
-  assertTrue(p2->deckCount[1] == 10, "p2->deckCount[1] == 10");
+  assertTrue(p2->deckCount[0] == 5, "p2->deckCount[0] == 5"); //10 cards originally but drew 5 cards
+  assertTrue(p2->deckCount[1] == 5, "p2->deckCount[1] == 10"); 
   assertTrue(p2->deckCount[2] == 0, "p2->deckCount[2] == 0");
 
   return 0;
