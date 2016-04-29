@@ -1,0 +1,143 @@
+
+Running unit test for function "getCost()"...
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[0]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[1]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[2]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[3]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[4]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[5]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[6]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[7]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[8]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[9]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[10]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[11]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[12]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[13]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[14]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[15]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[16]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[17]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[18
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[19]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[20]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[21]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[22]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[23]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[24]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[25]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == cost_list[26]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[0]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[1]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[2]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[3]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[4]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[5]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[6]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[7]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[8]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[9]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[10]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[11]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[12]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[13]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[14]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[15]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[16]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[17]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[18]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[19]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[20]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[21]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[22]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[23]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[24]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[25]
+TEST SUCCESSFULLY COMPLETED: getCost(0) == bad_list[26]
+File 'dominion.c'
+Lines executed:38.35% of 571
+Creating 'dominion.c.gcov'
+
+Running unit test for function "isGameOver()"...
+TEST SUCCESSFULLY COMPLETED: assert(isGameOver(p) == TRUE
+TEST SUCCESSFULLY COMPLETED: assert(isGameOver(p) != TRUE
+TEST SUCCESSFULLY COMPLETED: assert(isGameOver(p) != TRUE
+TEST SUCCESSFULLY COMPLETED: assert(isGameOver(p) == TRUE
+TEST SUCCESSFULLY COMPLETED: assert(isGameOver(p) == TRUE
+File 'dominion.c'
+Lines executed:38.35% of 571
+Creating 'dominion.c.gcov'
+
+Running unit test for function "intializeGame()"...
+TEST SUCCESSFULLY COMPLETED: initializeGame(1, k, seed, p1) == -1
+TEST SUCCESSFULLY COMPLETED: initializeGame(3, k, seed, p3) == 0
+TEST SUCCESSFULLY COMPLETED: initializeGame(4, k, seed, p4) == 0
+TEST SUCCESSFULLY COMPLETED: initializeGame(5, k, seed, p5) == -1
+TEST SUCCESSFULLY COMPLETED: initializeGame(2, kBad, seed, pbad) == -1
+TEST SUCCESSFULLY COMPLETED: initializeGame(2, k, seed, p2) == 0
+TEST SUCCESSFULLY COMPLETED: p2->numPlayers == 2
+TEST SUCCESSFULLY COMPLETED: p2->supplyCount[curse] == 10
+TEST SUCCESSFULLY COMPLETED: p2->supplyCount[estate] == 8
+TEST SUCCESSFULLY COMPLETED: p2->supplyCount[duchy] == 8
+TEST SUCCESSFULLY COMPLETED: p2->supplyCount[province] == 8
+TEST SUCCESSFULLY COMPLETED: p2->supplyCount[copper] == 46
+TEST SUCCESSFULLY COMPLETED: p2->supplyCount[silver] == 40
+TEST SUCCESSFULLY COMPLETED: p2->supplyCount[gold] == 30
+TEST SUCCESSFULLY COMPLETED: p2->embargoTokens[0] == 0)
+TEST SUCCESSFULLY COMPLETED: p2->deckCount[0] == 5
+TEST SUCCESSFULLY COMPLETED: p2->deckCount[1] == 10
+TEST SUCCESSFULLY COMPLETED: p2->deckCount[2] == 0
+File 'dominion.c'
+Lines executed:38.35% of 571
+Creating 'dominion.c.gcov'
+
+Running unit test for function "shuffle()"...
+TEST SUCCESSFULLY COMPLETED: initializeGame(1, k, seed1, &shuffledState) == -1
+TEST SUCCESSFULLY COMPLETED: compareCards(originalState, shuffledState, player1, deckCount) == TRUE
+TEST SUCCESSFULLY COMPLETED: compareCards(originalState, shuffledState, player2, deckCount) == TRUE
+TEST SUCCESSFULLY COMPLETED: compareCards(originalState, shuffledState, player3, deckCount) == TRUE
+TEST SUCCESSFULLY COMPLETED: compareCards(originalState, shuffledState, player4, deckCount) == TRUE
+TEST SUCCESSFULLY COMPLETED: compareCards(originalState, shuffledState, player1, deckCount) == TRUE
+TEST SUCCESSFULLY COMPLETED: compareCards(originalState, shuffledState, player2, deckCount) == TRUE
+TEST SUCCESSFULLY COMPLETED: compareCards(originalState, shuffledState, player3, deckCount) == TRUE
+TEST SUCCESSFULLY COMPLETED: compareCards(originalState, shuffledState, player4, deckCount) == TRUE
+File 'dominion.c'
+Lines executed:38.35% of 571
+Creating 'dominion.c.gcov'
+
+Running unit test for card "council_room"...
+TEST SUCCESSFULLY COMPLETED: value == 0
+TEST FAILED:                 numHandCards(p) == numHandCardsBefore + 4 - 1
+TEST SUCCESSFULLY COMPLETED: p->numBuys == numBuysBefore + 1
+TEST FAILED:                 numHandCards(p) == 5 + 1
+File 'dominion.c'
+Lines executed:38.35% of 571
+Creating 'dominion.c.gcov'
+
+Running unit test for card "steward"...
+TEST SUCCESSFULLY COMPLETED: value == 0
+TEST FAILED:                 p->coins == coinsBefore + 2
+TEST SUCCESSFULLY COMPLETED: value == 0
+TEST SUCCESSFULLY COMPLETED: numHandCards(p) == numHandCardsBefore + 2 - 1
+TEST SUCCESSFULLY COMPLETED: value == 0
+TEST SUCCESSFULLY COMPLETED: numHandCards(p) == numHandCardsBefore - 3
+File 'dominion.c'
+Lines executed:38.35% of 571
+Creating 'dominion.c.gcov'
+
+Running unit test for card "great_hall"...
+TEST SUCCESSFULLY COMPLETED: playCard(0, 0, 0, 0, p) == 0
+TEST SUCCESSFULLY COMPLETED: numHandCards(p) == numHandCardsBefore
+TEST SUCCESSFULLY COMPLETED: p->numActions == numActionsBefore + 1 - 1
+File 'dominion.c'
+Lines executed:38.35% of 571
+Creating 'dominion.c.gcov'
+
+Running unit test for card "village"...
+TEST SUCCESSFULLY COMPLETED: playCard(0, 0, 0, 0, p) == 0
+TEST SUCCESSFULLY COMPLETED: numHandCards(p) == numHandCardsBefore
+TEST SUCCESSFULLY COMPLETED: p->numActions == numActionsBefore + 2 - 1
+File 'dominion.c'
+Lines executed:38.35% of 571
+Creating 'dominion.c.gcov'
+
