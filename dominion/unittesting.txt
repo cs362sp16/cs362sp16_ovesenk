@@ -1,0 +1,15 @@
+Testing Efforts:
+The most difficult part of creating the tests was starting off. At the start I was unaware of how to begin with the testing efforts. I decided for my first test the best thing to was to take a function that had little overhead and dependence on other parts of the dominion code. I first selected getCost() as the unit test because it was a simple switch statement the returned a value.
+
+Once I had an understanding of how I could develop the unit test, created the next three unit tests: isGameOver(), initalizeGame(),and shuffle(). Initially, I was experiencing a great number of bugs in each one of the tests. However, after double checking my implementation and debugging the code, I discovered that my unit tests were not correct and showing false bugs. I took time to gain a better understanding of the code and developed tests that correctly used the dominion functions. After that the incorrect bugs were resolved,
+
+After the pitfalls that I experienced during the unit test implementation, developing the card tests proved to go more smoothly. Since each card is executed in the same way at the beginning, a great deal of the same code could be used. One issue I noticed was that when executing the playCards() function, I was passing the name of the card as the first parameter. This caused the all of the tests I wrote to fail. After looking at the dominion code, I realized that I miss read the function call and the handPos was the first parameter. To resolve this, I set the first hand of the user to be the card in question after initialization since there was no guarantee if the card was going to be in the hand and where.
+
+While starting the testing, I was using the system assert() function for my tests. This made determining if my tests were correct and storing the results because the unit tests would always throw and error and stop if a bug was found. I later reread the assignment and saw the hint about making your own assert function. I made a new c program called “test_helpers” to create the new assert so I would not have to recreate the function in every test.
+
+In class on the 28th of April Alex said that fixing the bugs were not in the scope of this project so I decided not to pursue a solution for the bugs that I found.
+
+
+Coverage Findings:
+In unittestresults.out, I decided to print the code coverage of dominion.c using gcov after every unit test. This shows the amount that the code is being covered for a certain test. I was not surprised by the overall coverage of the 8 tests (38.35%) however I was surprised about the coverage of each test. For example after unittest1 (getCost()) was run there was 5.08% coverage and when unittest2 (isGameOver()) was run there was 22.42% coverage (17.34% increase). This is surprising because in dominion.c is a much large (in number of lines) function than isGameOver(). This could possibly be caused because of what gcov considers a dense function, possible timing delay and gcov is reporting late, or an unknown reason at this time.
+`
