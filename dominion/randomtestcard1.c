@@ -1,3 +1,5 @@
+// Council Room Random Tester
+
 #include <stdio.h>
 #include <assert.h>
 #include "dominion.h"
@@ -16,11 +18,11 @@ int main(int argc, char **argv) {
   int numPlayers = 0;
   int currentPlayer = 0;
   //char playerStr[20];
-	struct gameState G;
+  struct gameState G;
   struct gameState *post = &G;
-	struct gameState preG;
+  struct gameState preG;
   struct gameState *pre= &preG;
-	int k[10] = {
+  int k[10] = {
     adventurer, 
     gardens,
     embargo, 
@@ -32,20 +34,20 @@ int main(int argc, char **argv) {
     tribute, 
     smithy, 
   };
-	
-	for (i = 1; i <= MAX_TESTS; i++) {
-		
-		seed = rand();
-		numPlayers = (rand() % 3) + 2; //Random number 0-4
+  
+  for (i = 1; i <= MAX_TESTS; i++) {
+    
+    seed = rand();
+    numPlayers = (rand() % 3) + 2; //Random number 0-4
 
-	  initializeGame(numPlayers, k, seed, post); // initialize post
-	  initializeGame(numPlayers, k, seed, pre); // initialize pre with same seed
+    initializeGame(numPlayers, k, seed, post); // initialize post
+    initializeGame(numPlayers, k, seed, pre); // initialize pre with same seed
 
     //Generate random inputs
     currentPlayer = whoseTurn(post);
-		post->hand[currentPlayer][0] = council_room;
+    post->hand[currentPlayer][0] = council_room;
 
-		r = playCard(0, 0, 0, 0, post);
+    r = playCard(0, 0, 0, 0, post);
 
     //Test oracle
     pre->numBuys++;
