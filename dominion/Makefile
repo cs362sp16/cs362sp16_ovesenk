@@ -42,40 +42,63 @@ cardtest3: cardtest3.c
 cardtest4: cardtest4.c
 	gcc -o cardtest4 cardtest4.c -g dominion.o rngs.o test_helpers.o $(CFLAGS)
 
+randomtestadventurer: randomtestadventurer.c
+	gcc -o randomtestadventurer randomtestadventurer.c -g dominion.o rngs.o test_helpers.o $(CFLAGS)
+
+randomtestout:
+	echo >> randomtestadventurer.out
+	randomtestadventurer 42 >> randomtestadventurer.out
+	gcov -f dominion.c >> randomtestadventurer.out
+	echo >> randomtestcard1.out
+	randomtestcard1 42 >> randomtestcard1.out
+	gcov -f dominion.c >> randomtestcard1.out
+	echo >> randomtestcard2.out
+	randomtestcard2 42 >> randomtestcard2.out
+	gcov -f dominion.c >> randomtestcard2.out
+	gcov -f dominion.c > randomtestcoverage.out
+
+randomtestcard1: randomtestcard1.c
+	gcc -o randomtestcard1 randomtestcard1.c -g dominion.o rngs.o test_helpers.o $(CFLAGS)
+
+randomtestcard2: randomtestcard2.c
+	gcc -o randomtestcard2 randomtestcard2.c -g dominion.o rngs.o test_helpers.o $(CFLAGS)
+
 unittest: unittest1 unittest2 unittest3 unittest4
 
 unittestout:
-	echo >> unittestresult.out
-	unittest1 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
-	unittest2 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
-	unittest3 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
-	unittest4 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
+	echo >> unittestresults.out
+	unittest1 >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	unittest2 >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	unittest3 >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	unittest4 >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
 
 cardtest: cardtest1 cardtest2 cardtest3 cardtest4
 
 cardtestout:
-	cardtest1 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
-	cardtest2 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
-	cardtest3 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
-	cardtest4 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
+	cardtest1 >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cardtest2 >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cardtest3 >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cardtest4 >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
 
 #cover:
-#	gcov dominion.c >> unittestresult.out
-#	echo >> unittestresult.out
+#	gcov dominion.c >> unittestresults.out
+#	echo >> unittestresults.out
 
-all: playdom player
+all: playdom player 
 
 test: test_helpers.o playdom player unittest cardtest
 
-unittestresult.out: test unittestout cardtestout
+unittestresults.out: test unittestout cardtestout
+	
+randomtest: test_helpers.o playdom player randomtestadventurer randomtestcard1 randomtestcard2
 
 clean:
-	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM
+	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randomtestadventurer randomtestcard1 randomtestcard2 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM
