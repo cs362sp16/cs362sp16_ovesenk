@@ -14,3 +14,14 @@ After running the code, I noticed that since the cards that I selected for rando
 This was because my test never provided an empty deck test case to the tester. I first created a mutant in the if statement so the current code could incorrectly call that line (in the if statement, I replaced the < symbol with a > symbol). Once I determined that this was the fault due to forced breaking, I wanted to modify tester so that case could exist. I attemped to create situation where this was to be true but I noticed difficulties that caused the rest of my tester to fail. Since the shuffle function's randomness is difficult to predict and replicate so creating the oracle to match this behaviour proved to be incredibly difficult. 
 
 Since the card functionality is fairly simple, both the unit tests and the random tests for the cards work well. Both council room and great hall have unit tests and random tests and they both had 100% coverage for their respective functions. When I developed the original unit test I had coverage in mind so I made sure to create the minimum number of runs to get the most funcitonality. However I feel that the random tests would be a greater overall tool to find hidden possible bugs and determine causality because it is able to create weird inputs and test edge cases to ensure that all possible bugs are found.
+
+
+The following are the added Makefile rules for this projects:
+randomtestadventurer.out
+  - Compile randomtestadventurer.c and run while writing the output along side the coverage to randomtestadventurer.out
+randomtestcard1.out
+  - Compile randomtestcard1.c and run while writing the output along side the coverage to randomtestcard1.out
+randomtestcard2.out
+  - Compile randomtestcard2.c and run while writing the output along side the coverage to randomtestcard2.out
+randomtestout
+  - Run the above three rule's in their respective order and append file randomtestcoverage.out containing the total coverage

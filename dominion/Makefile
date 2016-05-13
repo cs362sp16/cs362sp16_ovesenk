@@ -45,23 +45,29 @@ cardtest4: cardtest4.c
 randomtestadventurer: randomtestadventurer.c
 	gcc -o randomtestadventurer randomtestadventurer.c -g dominion.o rngs.o test_helpers.o $(CFLAGS)
 
-randomtestout:
+randomtestadventurer.out: randomtest
 	echo >> randomtestadventurer.out
 	randomtestadventurer 42 >> randomtestadventurer.out
 	gcov -f dominion.c >> randomtestadventurer.out
-	echo >> randomtestcard1.out
-	randomtestcard1 42 >> randomtestcard1.out
-	gcov -f dominion.c >> randomtestcard1.out
-	echo >> randomtestcard2.out
-	randomtestcard2 42 >> randomtestcard2.out
-	gcov -f dominion.c >> randomtestcard2.out
-	gcov -f dominion.c > randomtestcoverage.out
 
 randomtestcard1: randomtestcard1.c
 	gcc -o randomtestcard1 randomtestcard1.c -g dominion.o rngs.o test_helpers.o $(CFLAGS)
 
+randomtestcard1.out: randomtest
+	echo >> randomtestcard1.out
+	randomtestcard1 42 >> randomtestcard1.out
+	gcov -f dominion.c >> randomtestcard1.out
+
 randomtestcard2: randomtestcard2.c
 	gcc -o randomtestcard2 randomtestcard2.c -g dominion.o rngs.o test_helpers.o $(CFLAGS)
+
+randomtestcard2.out: randomtest
+	echo >> randomtestcard2.out
+	randomtestcard2 42 >> randomtestcard2.out
+	gcov -f dominion.c >> randomtestcard2.out
+
+randomtestout: randomtestadventurer.out randomtestcard1.out randomtestcard2.out
+	gcov -f dominion.c > randomtestcoverage.out
 
 unittest: unittest1 unittest2 unittest3 unittest4
 
