@@ -1,0 +1,23 @@
+I used gibsonri's dominion code for the differential testing for this assignment. I first used the 42 in my diffdominion script and immidiately saw that there was a difference in outputs. I investigated the outputs for the two runs and saw that half way through each game the output was the same. At one point, testdominion using my dominion.c as the source decided to buy a silver while the reference did not. This is interesting because they both are taking in the same seed. 
+
+Since I am not sure if gibsonri's dominion.c file is correctly implemented, there is no way that I can be 100% certain that this proved that my dominion.c is broken. Without a proper reference, differential testing like this is not very effective. And if the reference was correct, the diff output is difficult to sort through and determine what part of the code is faulty.
+
+
+After one run using seed 42 I got the following code coverage:
+
+My dominion.c source coverage:
+ File 'dominion.c'
+ Lines executed:60.21% of 573
+ Creating 'dominion.c.gcov'
+
+gibsonri's dominion.c source coverage:
+ File 'dominion.c'
+ Lines executed:56.99% of 558
+ Creating 'dominion.c.gcov'
+
+After another run on gibsomri's dominion.c source using seed 23:
+ File 'dominion.c'
+ Lines executed:65.41% of 558
+ Creating 'dominion.c.gcov'
+
+My tester had faily good coverage. Within 2 runs I was able to acheive at least 60% code coverage. Even though high code coverage does not mean the that the test is good or better than another test, however it has a greater chance of revealing bugs in the code. After analyzing what parts of the code was not touched, it was revealed that it was either cards that had not been played (or even selected as kingdom cards) and special functions that were not used in the tester.

@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# MUST EXECUTE IN KAI OVESEN'S DOMINION DIRECTORY
+
+if [ $# -ne 3 ]
+then
+  echo ERROR: Argument Mismatch
+  echo Usage
+  echo -e "\tdiffdominion DIR1 DIR2 SEED"
+  exit -1
+fi
+
+echo Making Dominion files...
+make clean > null.log
+make all > null.log
+
+HOME=$PWD
+cd $1
+make clean > null.log
+make all > null.log
+cd $HOME
+
+echo Compiling both dominion implementations...
+gcc -o testdominion $1/testdominion.c -g $1/dominion.o rngs.o -fpic -coverage -lm
+gcc -o testdominion_ref $1/testdominion.c -g $2/dominion.o rngs.o -fpic -coverage -lm
+#gcc -o testdominion $1/testdominion.c -g dominion.o rngs.o -Wall -fpic -coverage -lm
+#gcc -o testdominion_ref $2/testdominion.c -g dominion.o rngs.o -Wall -fpic -coverage -lm
+
+echo Running both dominion implementations...
+./testdominion $3 > ./testdominion.out
+./testdominion_ref $3 > ./testdominion_ref.out
+
+DIFF=diff ./testdominion.out ./testdominion_ref.out
+
+echo
+if [ $DIFF == "" ]
+then
+  echo TEST PASSED
+else
+  echo TEST FAILED
+  diff ./testdominion.out ./testdominion_ref.out
+fi
+
+#rm testdominion
+#rm testdominion_ref
+rm null.log

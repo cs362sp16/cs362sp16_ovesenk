@@ -12,6 +12,12 @@ dominion.o: dominion.h dominion.c rngs.o
 playdom: dominion.o playdom.c
 	gcc -o playdom playdom.c -g dominion.o rngs.o $(CFLAGS)
 
+testdominion: dominion.o testdominion.c all
+	gcc -o testdominion testdominion.c -g dominion.o rngs.o $(CFLAGS)
+
+testdominion.out: testdominion
+	testdominion 42 > testdominion.out
+
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
 
@@ -98,7 +104,7 @@ cardtestout:
 #	gcov dominion.c >> unittestresults.out
 #	echo >> unittestresults.out
 
-all: playdom player 
+all: playdom player
 
 test: test_helpers.o playdom player unittest cardtest
 
@@ -107,4 +113,4 @@ unittestresults.out: test unittestout cardtestout
 randomtest: test_helpers.o playdom player randomtestadventurer randomtestcard1 randomtestcard2
 
 clean:
-	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randomtestadventurer randomtestcard1 randomtestcard2 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM
+	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randomtestadventurer randomtestcard1 randomtestcard2 testdominion player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM

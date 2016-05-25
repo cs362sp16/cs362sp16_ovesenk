@@ -668,12 +668,15 @@ int feastEffect(int choice1, struct gameState *state, int handPos) {
       if (DEBUG) { 
         printf("Cards Left: %d\n", supplyCount(choice1, state));
       } 
+      return -1;
+
     } else if (state->coins < getCost(choice1)) { 
       printf("That card is too expensive!\n");
       
       if (DEBUG) { 
         printf("Coins: %d < %d\n", state->coins, getCost(choice1));
       } 
+      return -1;
     } else  { 
 
       if (DEBUG) { 
@@ -743,6 +746,7 @@ int remodelEffect(int choice1, int choice2, struct gameState *state, int handPos
   int i;
   int j;
   int currentPlayer = whoseTurn(state);
+
 
   j = state->hand[currentPlayer][choice1];  //store card we will trash
 
