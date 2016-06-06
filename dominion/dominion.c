@@ -621,10 +621,11 @@ int councilRoomEffect(struct gameState *state, int handPos) {
   int i;
   int currentPlayer = whoseTurn(state);
   //+4 Cards
-  /*for (i = 0; i < 4; i++) { */
-  for (i = 0; i <= 4; i++) {         //Forced Bug
+  int hand_count_pre = state->handCount[whoseTurn(state)];
+  for (i = 0; i < 4; i++) {
     drawCard(currentPlayer, state);
   } 
+  int hand_count_draw = state->handCount[whoseTurn(state)];
 			
   //+1 Buy
   state->numBuys++;
@@ -638,6 +639,7 @@ int councilRoomEffect(struct gameState *state, int handPos) {
 			
   //put played card in played card pile
   discardCard(handPos, currentPlayer, state, 0);
+  int hand_count_discard = state->handCount[whoseTurn(state)];
 
   return 0;
 

@@ -1,0 +1,25 @@
+I decided for my final project to work on a tarantula implementation. I decided to use python to implement it due to its simple nature and ease of access with the linux kernel. To get started with the development, I reviewed the slides that were presented in class to familiarize myself with how the tarantula process works. I discovered that tarantula loops over five steps:
+
+1) Run the test
+2) Collect coverage
+3) Determine if test failed or passed
+4) Determine if a statement was touched during that fail or pass.
+5) Calculate suspiciousness for that statement
+
+I also did research on other implementations of tarantula in other languages so I could get a sense of how others approached the problem. I found this repository to be a good reference on functionality:
+
+https://github.com/spideruci/Tarantula/blob/master/src/main/java/org/spideruci/tarantula
+
+The ability to run the test and run gcov was simple enough since I was familiar with the popen tool from the “subprocess” module. I modified my testdominion.c code to return an error code if the if a function in the tester failed so I would be able to identify if that test failed. After that modification, in a loop I ran the tester and then ran gcov to generate dominion.c.gcov. One issue I was noticing about looping the tester was that the coverage was not resetting after every run. I discovered that the file with the extension *.gcda had to be removed to remove past gcov information. I then determined if the test failed. If it did, a boolean was set so later in the code I could determine if the latest run failed.
+
+After running the test and gcov, I opened the dominion.c.gov and stored the lines of dominion and their coverage information into a list. I then looked to see if the latest test had failed. If it did, I increased the variable of total number of failed tests by one. If it passed, then I increased the variable of total number of passed tests by one. I did a similar method but for each line and their coverage to determine if it had been touched during the run. To determine both if it had been touched and the line number, I used regular expressions to parse those out.
+
+After adjusting the information on if a test passed or failed and which statements contributed, I calculated the pass and fail ratios that would be used in the suspiciousness calculation. The ratio calculations were the number of times a statement passed/failed divided by the number of passed/failed test. Using this information, I was able to calculate the suspiciousness as the following:
+
+line suspicousness = (fail ratio)/(pass ratio + fail ratio)
+
+Once all of the tests completed, I printed out the suspiciousness listed ordered by most suspicious.
+
+This was a fun exercise because it was a different type of engineering than what we have been working on during this term. Instead of just working on code to test dominion, I was able to work on a tool that could work for a more general purpose, which is something that I always like to strive for in software development.
+
+I have also commited the python implementation of tarantula as “tarantula_localization.py”.

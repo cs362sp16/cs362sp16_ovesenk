@@ -1,0 +1,32 @@
+I decided to debug my own dominon.c implementation. To find an existing bug, I ran my unit tests and card tests that I completed in assignment 2. I discovered that there was a bug in the council_room card implementation. In my card test program (cardtest1.c, already commited to git), the following line asserted as failed:
+  
+assertTrue(numHandCards(p) == numHandCardsBefore + 4 - 1, "numHandCards(p) == numHandCardsBefore + 4 - 1");  //Starting cards + 4 drawn - 1 discard
+
+To debug the problem I took a look at the test case to determine where the bug was located to assure that it was council_room that was causing the issue. I saw that the function that was called that caused the fault was the function playCard. Since I understand how the API works, I know that the playCard function takes the first parameter which is the card position and passes that into cardEffect which in turn executes the function for the card located in the card position. The following lines in the unit test assures that council room executes:
+
+p->hand[0][0] = council_room;
+assertTrue(playCard(0, 0, 0, 0, p) == 0, "playCard(0, 0, 0, 0, p) == 0");
+
+Now that I understood that the unit test was correctly calling council_room, I went back to make sure that I understood what that card was supposed to be doing. Using the wiki http://wiki.dominionstrategy.com/index.php/Council_Room to verify the funcitonality of the council_room card. The concil_room card has the following attributes: +4 card, +1 buy, and every other play draws a card. Knowing that, I went to the council_room function looked at the lines of code that affected the number of cards in the current player’s hand. I discovered that there is one set of statements that draw cards and then a discard the counci_room card that was just played.
+
+I then placed integer variables around the statements so when I ran the code in the debugger, I could easily determine the values of the number of cards in the current player’s hand before and after each statement. I titled this variables as “hand_count_pre” (count at the start), “hand_count_draw” (count after the cards are drawn), and “hand_count_discard” (count after council_room discard). Using gdb, I set a breakpoint at the beginning of the council_room function and ran the card tester. When gdb started, I stepped through the code until the last line of council_room was executed. I then used the “print” function to display the values of the three variables that I created. Below are the variables and their reported values:
+
+  hand_count_pre = 5
+  hand_count_draw = 10
+  hand_count_discard = 9
+
+After examining the variables in the debugger, I discovered that the value of “hand_count_discard” was not correct. The hand count should increase by 4 before the discard, not 5. This helped me narrow the issue down to the following lines:
+  
+for (i = 0; i <= 4; i++) {
+  drawCard(currentPlayer, state);
+} 
+
+By examination, I was able to see that the for loop statement was not correct. Due to the <= symbol for the exit condition, the loop executed 5 times, not 4. I remembered that this was one of the bugs that was introduced in the first assignment in this class. To verify that this was the cause of the bug, I changed the for loop statement to “”and reran the debugger with the variables intact. The variables now showed the correct value, assuring that this was the bug:
+
+  hand_count_pre = 5
+  hand_count_draw = 9
+  hand_count_discard = 8
+
+Though this was a small bug to fix, I still used a number of Agans’ Debugging Rules. I particular, I understood the system, I recreated the fault, I focused on looking before thinking too hard about the problem, and I only changed one thing at time. The rules that did not apply were simply not needed because I was able to resolve the issue before they came into play.
+
+The output of cardtest1 before and after debugging is stored in "debug.out"

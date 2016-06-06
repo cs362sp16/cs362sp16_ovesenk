@@ -1,0 +1,30 @@
+Fault #2/Council Room card, other players hand count doesn't update
+
+Fault occurs when the steward card is activated and the number of cards that every other player than current has fails to update. Detected using cardtest1.c 
+
+Detected on the version of dominion located in the repository owned by "hollidac".
+
+Possible Fault Location:
+  //Each other player draws a card
+  for (i = 0; i < state->numPlayers; i++) { 
+    if (i != currentPlayer) { 
+      drawCard(i, state);
+    } 
+  } 
+
+Test case:
+  struct gameState G;
+  struct gameState *p = &G;
+
+  int seed = 123456789;
+  int k[10] = {council_room, gardens, embargo, village, minion, mine, cutpurse, 
+    sea_hag, tribute, smithy};
+  initializeGame(2, k, seed, p);
+
+  p->hand[0][0] = council_room;
+  endTurn(p);
+  assertTrue(numHandCards(p) == 5 + 1, "numHandCards(p) == 5 + 1"); //Starting cards + 1 drawn
+                                     //BUG: should be 5 + 1
+  
+Severity: Medium
+Priority: High

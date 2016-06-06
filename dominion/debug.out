@@ -1,0 +1,13 @@
+Test run before debugging:
+Running unit test for card "council_room"...
+TEST SUCCESSFULLY COMPLETED: playCard(0, 0, 0, 0, p) == 0
+TEST FAILED:                 numHandCards(p) == numHandCardsBefore + 4 - 1
+TEST SUCCESSFULLY COMPLETED: p->numBuys == numBuysBefore + 1
+TEST FAILED:                 numHandCards(p) == 5 + 1
+
+Test run after debugging:
+Running unit test for card "council_room"...
+TEST SUCCESSFULLY COMPLETED: playCard(0, 0, 0, 0, p) == 0
+TEST SUCCESSFULLY COMPLETED: numHandCards(p) == numHandCardsBefore + 4 - 1
+TEST SUCCESSFULLY COMPLETED: p->numBuys == numBuysBefore + 1
+TEST FAILED:                 numHandCards(p) == 5 + 1

@@ -8,6 +8,8 @@
 #include "rngs.h"
 #include <stdlib.h>
 
+int retVal = 0;
+
 int main(int argc, char **argv) {
   if (argc != 2) {
     fputs("ERROR: Argument Mismatch\n", stderr);
@@ -161,6 +163,7 @@ int main(int argc, char **argv) {
       if (r == -1) {
         //printf("Card play %s failed", cardStr[handCard(cardPos, p)]);
         printf("FAILED\n");
+        retVal = r;
       } else {
         //printf("Card play %s successful", cardStr[handCard(cardPos, p)]); //STRAGE SEGFAULT
         printf("successful\n");
@@ -205,6 +208,7 @@ int main(int argc, char **argv) {
             r = buyCard(cardToBuy, p);
             if (r == -1) {
               //printf("Bought %s FAILED\n", cardStr[cardToBuy]);
+              retVal = r;
             } else {
               printf("Bought %s: successful\n", cardStr[cardToBuy]);
               break;
@@ -227,6 +231,6 @@ int main(int argc, char **argv) {
   printf ("Finished game.\n");
   int players[numPlayers];
   getWinners(players, p);
-  return 0;
+  return retVal;
 }
 

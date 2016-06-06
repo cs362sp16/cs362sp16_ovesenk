@@ -1,0 +1,25 @@
+Fault #1/Steward card, current player coins fail to update
+
+Fault occurs when the steward card is activated and the number of coins that the current player has fails to update. Detected using cardtest2.c 
+
+Detected on the version of dominion located in the repository owned by "houw".
+
+Possible Fault Location:
+  state->coins = state->coins + 2;
+
+Test case:
+  struct gameState G;
+  struct gameState *p = &G;
+
+  int seed = 123456789;
+  int coinsBefore;
+  int k[10] = {steward, gardens, embargo, village, minion, mine, cutpurse, 
+    sea_hag, tribute, smithy};
+  
+  initializeGame(2, k, seed, p);
+  p->hand[0][0] = steward;
+  coinsBefore = p->coins;
+  assertTrue(p->coins == coinsBefore + 2, "p->coins == coinsBefore + 2");  //BUG: coin values not updating
+
+Severity: Medium
+Priority: High

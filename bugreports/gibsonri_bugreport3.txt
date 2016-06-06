@@ -1,0 +1,35 @@
+Fault #3/Great Hall card current player hand count incorrect value
+
+Fault occurs when the great hall card is activated and the number of cards that the current player has in their hand the incorrect value. Detected using cardtest3.c
+
+Detected on the version of dominion located in the repository owned by "gibsonri".
+
+Possible Fault Location:
+  case great_hall:
+    //+1 Card
+    drawCard(currentPlayer, state);
+			
+    //+1 Actions
+    state->numActions++;
+			
+    //discard card from hand
+    discardCard(handPos, currentPlayer, state, 0);
+
+Test case:
+  struct gameState G;
+  struct gameState *p = &G;
+
+  int seed = 123456789;
+  int numActionsBefore;
+  int numHandCardsBefore;
+  int k[10] = {great_hall, gardens, embargo, village, minion, mine, cutpurse, 
+    sea_hag, tribute, smithy};
+
+  initializeGame(2, k, seed, p);
+  numHandCardsBefore = numHandCards(p);
+
+  p->hand[0][0] = great_hall;
+  assertTrue(numHandCards(p) == numHandCardsBefore, "numHandCards(p) == numHandCardsBefore");
+  
+Severity: Medium
+Priority: High
